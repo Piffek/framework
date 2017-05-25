@@ -20,17 +20,15 @@ class Router{
 	
 	public function get($url, $controller, $method){
 		
-		$req = new Requests();
-		
 		$className = '\\src\\packageName\\Controller\\' . $controller;
-		$cont =  new $className($req->valueMethod());
+		$cont =  new $className(Requests::valueMethod());
 		return $cont->$method();
 	}
 	
 	public function post($url, $controller, $method){
 		$req = new Requests();
 		$className = '\\src\\packageName\\Controller\\' . $controller;
-		$cont =  new $className($req->valueMethod());
+		$cont =  new $className(Requests::valueMethod());
 		return $cont->$method();
 		
 	}

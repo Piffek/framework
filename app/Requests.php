@@ -5,7 +5,7 @@ namespace app;
 class Requests{
 
 
-	public function valueMethod(){
+	public static function valueMethod(){
 	
 		$path = trim($_SERVER['REQUEST_URI'], '/');
 		@list($action, $param) = explode('/',$path, 2);
@@ -24,8 +24,6 @@ class Requests{
 	}
 
 
-
-	
 	public static function urlMethod(){
 		
 		return $_SERVER['REQUEST_METHOD'];
