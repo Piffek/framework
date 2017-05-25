@@ -19,20 +19,28 @@ class Router{
 	}
 	
 	public function get($url, $controller, $method){
-		
-		$className = '\\src\\packageName\\Controller\\' . $controller;
-		$cont =  new $className(Requests::valueMethod());
-		return $cont->$method();
+
+		try{
+			if($url === Requests::url()){
+				$className = '\\src\\packageName\\Controller\\' . $controller;
+				$cont =  new $className(Requests::valueMethod());
+				$cont->$method();
+			}
+		}catch (\Exception $e){
+			throw new \Exception($e->getMessage());
+		}
 	}
+
 	
 	public function post($url, $controller, $method){
-		$req = new Requests();
+
 		$className = '\\src\\packageName\\Controller\\' . $controller;
 		$cont =  new $className(Requests::valueMethod());
 		return $cont->$method();
 		
 	}
 
+	
 	
 
 	
