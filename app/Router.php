@@ -21,7 +21,7 @@ class Router{
 	public function get($url, $controller, $method){
 
 		try{
-			if($url === Requests::url()){
+			if($url === Requests::url() && __FUNCTION__ == strtolower(Requests::urlMethod())){
 				$className = '\\src\\packageName\\Controller\\' . $controller;
 				$cont =  new $className(Requests::valueMethod());
 				$cont->$method();
@@ -34,9 +34,15 @@ class Router{
 	
 	public function post($url, $controller, $method){
 
-		$className = '\\src\\packageName\\Controller\\' . $controller;
-		$cont =  new $className(Requests::valueMethod());
-		return $cont->$method();
+		try{
+			if($url === Requests::url() && __FUNCTION__ == strtolower(Requests::urlMethod())){
+				$className = '\\src\\packageName\\Controller\\' . $controller;
+				$cont =  new $className(Requests::valueMethod());
+				$cont->$method();
+			}
+		}catch (\Exception $e){
+			throw new \Exception($e->getMessage());
+		}
 		
 	}
 

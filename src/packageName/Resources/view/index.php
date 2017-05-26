@@ -1,3 +1,5 @@
-<?php
 
-echo 'cos2121';
+<form method='POST' action='/produkt'>
+	<input type='text' name='text'>
+	<input type='submit' value='wyslij'>
+</form>
