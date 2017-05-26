@@ -19,9 +19,8 @@ class Router{
 	}
 	
 	public function get($url, $controller, $method){
-
 		try{
-			if($url === Requests::url() && __FUNCTION__ == strtolower(Requests::urlMethod())){
+			if($url === Requests::url() && 'GET' === Requests::urlMethod()){
 				$className = '\\src\\packageName\\Controller\\' . $controller;
 				$cont =  new $className(Requests::valueMethod());
 				$cont->$method();
@@ -35,7 +34,7 @@ class Router{
 	public function post($url, $controller, $method){
 
 		try{
-			if($url === Requests::url() && __FUNCTION__ == strtolower(Requests::urlMethod())){
+			if($url === Requests::url() && 'POST' === Requests::urlMethod()){
 				$className = '\\src\\packageName\\Controller\\' . $controller;
 				$cont =  new $className(Requests::valueMethod());
 				$cont->$method();
