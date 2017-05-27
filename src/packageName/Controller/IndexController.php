@@ -4,13 +4,17 @@
 namespace src\packageName\Controller;
 
 use app\DefaultController;
+use Framework;
 
 class IndexController extends DefaultController
 {
 	public function index(){
 		
-		
-		require __DIR__ . '/../Resources/view/index.php';
+		$framework = new \src\packageName\Model\Framework('framework');
+		foreach($framework->getAll() as $row){
+			echo $row['nazwa'];
+		}
+		//require __DIR__ . '/../Resources/view/index.php';
 		
 	}
 	
