@@ -2,9 +2,9 @@
 
 namespace app;
 use src\packageName\Controllers;
-use app\Factory\RequestsFactory;
 
-class Routers implements RequestsFactory
+
+class Routers
 {
 	
 	protected $router = [];
@@ -23,7 +23,7 @@ class Routers implements RequestsFactory
 
 			if($url === Requests::url() && 'GET' === Requests::urlMethod()){
 				
-				$this->ifMethodIsChecked($controller, $method);
+				return $this->ifMethodIsChecked($controller, $method);
 			}
 	}
 
@@ -32,7 +32,7 @@ class Routers implements RequestsFactory
 
 			if($url === Requests::url() && 'POST' === Requests::urlMethod()){
 				
-				$this->ifMethodIsChecked($controller, $method);
+				return $this->ifMethodIsChecked($controller, $method);
 			}
 		
 		
@@ -41,6 +41,12 @@ class Routers implements RequestsFactory
 	public function ifMethodIsChecked($controller, $method){
 		
 		$className = '\\src\\packageName\\Controllers\\' . $controller;
+		
+		if(!method_exists($className, $method)){
+			
+			throw new \Exception('in '.$controller.' not appear '.$method.' method');
+			
+		}
 		$cont =  new $className(Requests::spreadURLToKeyAndValue());
 		$cont->$method();
 		

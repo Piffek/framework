@@ -11,9 +11,7 @@ class IndexController extends DefaultController
 	public function index(){
 		
 		$framework = new Framework('framework');
-		foreach($framework->getAll() as $row){
-			echo $row['nazwa'];
-		}
+		print_r($framework->getAll());
 		//require __DIR__ . '/../Resources/view/index.php';
 		
 	}

@@ -25,7 +25,7 @@ class Models
 		$query->execute();
 	
 		if (isset($query)) {
-			return $query;
+			return $query->fetchAll(PDO::FETCH_CLASS);
 		} else {
 			return null;
 		}

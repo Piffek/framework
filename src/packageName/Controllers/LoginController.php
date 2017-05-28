@@ -1,7 +1,7 @@
 <?php
 
 
-namespace src\packageName\Controller;
+namespace src\packageName\Controllers;
 
 use app\DefaultController;
 
