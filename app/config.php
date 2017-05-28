@@ -1,6 +1,10 @@
 <?php
-define('DATABASE_HOST', '127.0.0.1');
-define('DATABASE_NAME', 'framework');
-define('DATABASE_USER', 'root');
-define('DATABASE_PASS', '');
-?>
+
+return [
+	'database' => [
+		'host' => '127.0.0.1', 
+		'name' => 'framework',
+		'user' => 'root', 
+		'password' => '',
+	]
+];
