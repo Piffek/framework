@@ -4,13 +4,13 @@
 namespace src\packageName\Controller;
 
 use app\DefaultController;
-use Framework;
+use src\packageName\Model\Framework;
 
 class IndexController extends DefaultController
 {
 	public function index(){
 		
-		$framework = new \src\packageName\Model\Framework();
+		$framework = new Framework('framework');
 		foreach($framework->getAll() as $row){
 			echo $row['nazwa'];
 		}

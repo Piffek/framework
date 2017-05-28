@@ -8,7 +8,7 @@ class Model
 {
 	public $table;
 	public $pdo;
-	public function __construct(){
+	public function __construct($table){
 		$this->table = $table;
 		try{
 			$this->pdo = new PDO('mysql:host='.DATABASE_HOST .';dbname='.DATABASE_NAME.'', ''.DATABASE_USER.'', ''.DATABASE_PASS.'', array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8'")) or die();

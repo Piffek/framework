@@ -3,9 +3,9 @@
 namespace app;
 use Exception;
 use src\packageName\Controller;
-use app\Factory\RequestFactory;
+use app\Factory\RequestsFactory;
 
-class Router implements RequestFactory
+class Router implements RequestsFactory
 {
 	
 	protected $router = [];
