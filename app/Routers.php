@@ -1,7 +1,6 @@
 <?php
 
 namespace app;
-use Exception;
 use src\packageName\Controllers;
 use app\Factory\RequestsFactory;
 
@@ -39,7 +38,7 @@ class Routers implements RequestsFactory
 		
 	}
 	
-	public function ifMethodIsChecked(){
+	public function ifMethodIsChecked($controller, $method){
 		
 		$className = '\\src\\packageName\\Controllers\\' . $controller;
 		$cont =  new $className(Requests::spreadURLToKeyAndValue());

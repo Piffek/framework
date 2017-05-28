@@ -4,7 +4,7 @@
 namespace src\packageName\Controllers;
 
 use app\DefaultController;
-use src\packageName\Model\Framework;
+use src\packageName\Models\Framework;
 
 class IndexController extends DefaultController
 {

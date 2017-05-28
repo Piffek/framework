@@ -1,10 +1,10 @@
 <?php
-namespace src\packageName\Model;
+namespace src\packageName\Models;
 
 
-use app\Model;
+use app\Models;
 
-class Framework extends Model
+class Framework extends Models
 {
 	
 }

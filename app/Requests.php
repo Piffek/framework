@@ -2,7 +2,8 @@
 
 namespace app;
 
-class Requests{
+class Requests
+{
 	
 	public $param = array();
 	

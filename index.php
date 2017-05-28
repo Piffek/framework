@@ -4,10 +4,9 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 
-use app\Requests;
-use app\Router;
+use app\Routers;
 
 require 'app/bootstrap.php';
 
 
-Router::load(__DIR__ . '/src/packageName/routes.php');
+Routers::load(__DIR__ . '/src/packageName/routes.php');
