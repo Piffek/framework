@@ -14,7 +14,7 @@ class Requests{
 	}
 	
 	
-	public static function valueMethod(){
+	public static function spreadURLToKeyAndValue(){
 	
 		$path = trim($_SERVER['REQUEST_URI'], '/');
 		@list($param) = explode('/',$path, 1);
