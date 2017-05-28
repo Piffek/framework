@@ -13,7 +13,6 @@ class Models
 		try{
 			$config = require 'config.php';
 			$this->pdo = new PDO('mysql:host='.$config['database']['host'] .';dbname='.$config['database']['name'].'', ''.$config['database']['user'].'', ''.$config['database']['password'].'', array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8'")) or die();
-			echo("");
 	
 		}
 		catch(PDOException $e){
@@ -32,14 +31,5 @@ class Models
 		}
 	}
 	
-	public function getWhere($what,$var){
-		$query = $this->pdo->prepare("SELECT * FROM ".$this->table." WHERE :".$what." = ".$what."");
-		$query->bindParam(':lang', $var);
-		$query->execute();
-		if (isset($query)) {
-			return $query;
-		} else {
-			return null;
-		}
-	}
+	
 }
