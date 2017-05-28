@@ -2,10 +2,10 @@
 
 namespace app;
 use Exception;
-use src\packageName\Controller;
+use src\packageName\Controllers;
 use app\Factory\RequestsFactory;
 
-class Router implements RequestsFactory
+class Routers implements RequestsFactory
 {
 	
 	protected $router = [];
@@ -23,9 +23,8 @@ class Router implements RequestsFactory
 	public function get($url, $controller, $method){
 
 			if($url === Requests::url() && 'GET' === Requests::urlMethod()){
-				$className = '\\src\\packageName\\Controller\\' . $controller;
-				$cont =  new $className(Requests::spreadURLToKeyAndValue());
-				$cont->$method();
+				
+				$this->ifMethodIsChecked($controller, $method);
 			}
 	}
 
@@ -33,11 +32,18 @@ class Router implements RequestsFactory
 	public function post($url, $controller, $method){
 
 			if($url === Requests::url() && 'POST' === Requests::urlMethod()){
-				$className = '\\src\\packageName\\Controller\\' . $controller;
-				$cont =  new $className(Requests::spreadURLToKeyAndValue());
-				$cont->$method();
+				
+				$this->ifMethodIsChecked($controller, $method);
 			}
 		
+		
+	}
+	
+	public function ifMethodIsChecked(){
+		
+		$className = '\\src\\packageName\\Controllers\\' . $controller;
+		$cont =  new $className(Requests::spreadURLToKeyAndValue());
+		$cont->$method();
 		
 	}
 

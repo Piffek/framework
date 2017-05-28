@@ -4,7 +4,7 @@ namespace app;
 require_once 'config.php';
 use \PDO;
 
-class Model
+class Models
 {
 	public $table;
 	public $pdo;

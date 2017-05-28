@@ -1,7 +1,7 @@
 <?php
 //require __DIR__ . '/../Resources/view/index.php';
 
-namespace src\packageName\Controller;
+namespace src\packageName\Controllers;
 
 use app\DefaultController;
 use src\packageName\Model\Framework;
