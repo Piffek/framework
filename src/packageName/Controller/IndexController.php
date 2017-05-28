@@ -10,7 +10,7 @@ class IndexController extends DefaultController
 {
 	public function index(){
 		
-		$framework = new \src\packageName\Model\Framework('framework');
+		$framework = new \src\packageName\Model\Framework();
 		foreach($framework->getAll() as $row){
 			echo $row['nazwa'];
 		}
