@@ -4,9 +4,9 @@
 namespace src\packageName\Controllers;
 
 
-use app\BaseController;
+use app\Controller;
 
-class LoginController extends BaseController
+class LoginController extends Controller
 {
 	public function index(){
 		echo $this->request['imie'];
