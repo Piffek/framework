@@ -21,7 +21,7 @@ class Routers
 	
 	public function get($url, $controller, $method){
 
-			if($url === Requests::url() && 'GET' === Requests::urlMethod()){
+			if($url === Requests::getFirstPartOfUrl() && 'GET' === Requests::getUrlMethod()){
 				
 				return $this->ifMethodIsChecked($controller, $method);
 			}
@@ -30,7 +30,7 @@ class Routers
 	
 	public function post($url, $controller, $method){
 
-			if($url === Requests::url() && 'POST' === Requests::urlMethod()){
+			if($url === Requests::getFirstPartOfUrl() && 'POST' === Requests::getUrlMethod()){
 				
 				return $this->ifMethodIsChecked($controller, $method);
 			}
@@ -47,7 +47,7 @@ class Routers
 			throw new \Exception('in '.$controller.' not appear '.$method.' method');
 			
 		}
-		$cont =  new $className(Requests::spreadURLToKeyAndValue());
+		$cont =  new $className(Requests::groupURLToKeyAndValueAvailableInControllers());
 		$cont->$method();
 		
 	}

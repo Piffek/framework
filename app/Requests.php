@@ -7,7 +7,7 @@ class Requests
 	
 	public $param = array();
 	
-	public static function url(){
+	public static function getFirstPartOfUrl(){
 		
 		$url =  trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
 		$arrWithUrl = explode('/', $url);
@@ -15,7 +15,7 @@ class Requests
 	}
 	
 	
-	public static function spreadURLToKeyAndValue(){
+	public static function groupURLToKeyAndValueAvailableInControllers(){
 	
 		$path = trim($_SERVER['REQUEST_URI'], '/');
 		@list($param) = explode('/',$path, 1);
@@ -23,7 +23,7 @@ class Requests
 	
 			$param = explode('/', $path);
 				
-			$key = array_search(self::url(), $param);
+			$key = array_search(self::getFirstPartOfUrl(), $param);
 			unset($param[$key]);
 				
 			$parameters = array();
@@ -38,7 +38,7 @@ class Requests
 	}
 	
 	
-	public static function urlMethod(){
+	public static function getUrlMethod(){
 	
 		return $_SERVER['REQUEST_METHOD'];
 	
