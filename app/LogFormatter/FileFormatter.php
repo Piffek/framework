@@ -1,6 +1,6 @@
 <?php 
 
-use src\FileFormatterInterface;
+use Src\FileFormatterInterface;
 
 class FileFormatter implements FileFormatterInterface
 {

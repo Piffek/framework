@@ -1,11 +1,11 @@
 <?php
 
 
-namespace src\packageName\Controller;
+namespace Src\packageName\Controller;
 
-use app\Controller;
+use App\Controllers;
 
-class ProductController extends Controller
+class ProductController extends Controllers
 {
 	public function show(){
 		

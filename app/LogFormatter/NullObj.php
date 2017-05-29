@@ -1,6 +1,6 @@
 <?php
 
-namespace app\LogFormatter;
+namespace App\LogFormatter;
 
 class NullObj implements FormatterInterface
 {

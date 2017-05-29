@@ -1,8 +1,8 @@
 <?php
-namespace src\packageName\Models;
+namespace Src\packageName\Models;
 
 
-use app\Models;
+use App\Models;
 
 class Framework extends Models
 {

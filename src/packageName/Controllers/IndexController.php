@@ -1,12 +1,12 @@
 <?php
 //require __DIR__ . '/../Resources/view/index.php';
 
-namespace src\packageName\Controllers;
+namespace Src\packageName\Controllers;
 
-use src\packageName\Models\Framework;
-use app\Controller;
+use Src\packageName\Models\Framework;
+use App\Controllers;
 
-class IndexController extends Controller
+class IndexController extends Controllers
 {
 	public function index(){
 		

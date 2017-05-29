@@ -1,8 +1,8 @@
 <?php
 
-namespace  app\LogFormatter;
+namespace  App\LogFormatter;
 
-use src\Logger;
+use Arc\Logger;
 
 class FileAdapter extends Logger
 {

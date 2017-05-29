@@ -1,7 +1,7 @@
 <?php
 
-namespace app;
-use src\packageName\Controllers;
+namespace App;
+use Src\packageName\Controllers;
 
 
 class Routers

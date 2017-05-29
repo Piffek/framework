@@ -1,8 +1,8 @@
 <?php
 
-namespace app\LogFormatter;
+namespace App\LogFormatter;
 
-use src\NullObj;
+use Src\NullObj;
 
 abstract class Logger
 {

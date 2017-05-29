@@ -1,6 +1,6 @@
 <?php
 
-namespace app;
+namespace App;
 use \PDO;
 
 class Models
@@ -24,11 +24,7 @@ class Models
 		$query = $this->pdo->prepare("SELECT * FROM ".$this->table."");
 		$query->execute();
 	
-		if (isset($query)) {
-			return $query->fetchAll(PDO::FETCH_CLASS);
-		} else {
-			return null;
-		}
+		return $query->fetchAll(PDO::FETCH_CLASS);
 	}
 	
 	
