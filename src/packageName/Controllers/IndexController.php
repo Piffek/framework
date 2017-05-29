@@ -11,8 +11,8 @@ class IndexController extends BaseController
 	public function index(){
 		
 		$framework = new Framework('framework');
-		print_r($framework->getAll());
-		//require __DIR__ . '/../Resources/view/index.php';
+	
+		echo $this->twig->render('index.html', array('framework' => $framework->getAll()));
 		
 	}
 	

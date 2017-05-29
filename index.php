@@ -6,7 +6,7 @@ error_reporting(E_ALL);
 
 use app\Routers;
 
-require 'app/bootstrap.php';
+require 'bootstrap.php';
 
 
 Routers::load(__DIR__ . '/src/packageName/routes.php');
