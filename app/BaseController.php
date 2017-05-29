@@ -1,7 +1,7 @@
 <?php
 namespace app;
 
-class DefaultController
+class BaseController
 {
 	protected $request;
 	public function __construct($request){

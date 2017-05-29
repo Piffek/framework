@@ -3,9 +3,9 @@
 
 namespace src\packageName\Controller;
 
-use app\DefaultController;
+use app\BaseController;
 
-class ProductController extends DefaultController
+class ProductController extends BaseController
 {
 	public function show(){
 		

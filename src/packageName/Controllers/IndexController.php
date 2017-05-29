@@ -3,10 +3,10 @@
 
 namespace src\packageName\Controllers;
 
-use app\DefaultController;
 use src\packageName\Models\Framework;
+use app\BaseController;
 
-class IndexController extends DefaultController
+class IndexController extends BaseController
 {
 	public function index(){
 		

@@ -3,9 +3,10 @@
 
 namespace src\packageName\Controllers;
 
-use app\DefaultController;
 
-class LoginController extends DefaultController
+use app\BaseController;
+
+class LoginController extends BaseController
 {
 	public function index(){
 		echo $this->request['imie'];
