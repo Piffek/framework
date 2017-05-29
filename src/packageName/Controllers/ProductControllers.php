@@ -5,7 +5,7 @@ namespace Src\packageName\Controller;
 
 use App\Controllers;
 
-class ProductController extends Controllers
+class ProductControllers extends Controllers
 {
 	public function show(){
 		

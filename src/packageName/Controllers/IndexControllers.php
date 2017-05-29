@@ -6,7 +6,7 @@ namespace Src\packageName\Controllers;
 use Src\packageName\Models\Framework;
 use App\Controllers;
 
-class IndexController extends Controllers
+class IndexControllers extends Controllers
 {
 	public function index(){
 		

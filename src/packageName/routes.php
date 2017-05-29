@@ -2,10 +2,10 @@
 
 
 
-$router->get('', 'IndexController', 'index');
+$router->get('', 'IndexControllers', 'index');
 
-$router->get('login', 'LoginController', 'index');
+$router->get('login', 'LoginControllers', 'index');
 
-$router->get('produkt', 'ProductController', 'show');
+$router->get('produkt', 'ProductControllers', 'show');
 
-$router->post('produkt', 'ProductController', 'addProduct');
+$router->post('produkt', 'ProductControllers', 'addProduct');

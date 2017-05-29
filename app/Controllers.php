@@ -1,7 +1,7 @@
 <?php
 namespace App;
 
-class Controllers extends BaseController
+class Controllers extends BaseControllers
 {
 	protected $request;
 	

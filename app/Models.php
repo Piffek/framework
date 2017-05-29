@@ -15,14 +15,9 @@ class Models
 	
 	public function connect(){
 		
-		try{
-			$config = require 'config.php';
-			$pdo = new PDO('mysql:host='.$config['database']['host'] .';dbname='.$config['database']['name'].'', ''.$config['database']['user'].'', ''.$config['database']['password'].'', array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8'")) or die();
-			return $pdo;
-		}
-		catch(PDOException $e){
-			echo'Błąd :' . $e->getMessage();
-		}
+		$config = require 'config.php';
+		$pdo = new PDO('mysql:host='.$config['database']['host'] .';dbname='.$config['database']['name'].'', ''.$config['database']['user'].'', ''.$config['database']['password'].'', array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8'")) or die();
+		return $pdo;
 		
 	}
 	
