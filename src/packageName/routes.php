@@ -4,7 +4,7 @@
 
 $router->get('', 'IndexController', 'index');
 
-$router->get('login', 'LoginController', 'indsfdex');
+$router->get('login', 'LoginController', 'index');
 
 $router->get('produkt', 'ProductController', 'show');
 

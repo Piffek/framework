@@ -9,8 +9,7 @@ use app\Controller;
 class LoginController extends Controller
 {
 	public function index(){
-		echo $this->request['imie'];
-		//require __DIR__ . '/../Resources/view/index.php';
+		echo $this->render('login.html.twig', array('imie' => $this->request['imie']));
 		
 	}
 	

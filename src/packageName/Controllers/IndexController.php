@@ -12,7 +12,7 @@ class IndexController extends Controller
 		
 		$framework = new Framework('framework');
 	
-		echo $this->twig()->render('index.html', array('framework' => $framework->getAll()));
+		echo $this->render('index.html.twig', array('framework' => $framework->getAll()));
 		
 	}
 	
