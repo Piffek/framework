@@ -40,7 +40,7 @@ class Routers
 	
 	public function ifMethodIsChecked($controller, $method){
 		
-		$className = '\\src\\packageName\\Controllers\\' . $controller;
+		$className = '\\Src\\packageName\\Controllers\\' . $controller;
 		
 		if(!method_exists($className, $method)){
 			
