@@ -2,6 +2,7 @@
 
 namespace App;
 use Src\packageName\Controllers;
+use Closure;
 
 
 class Routers
@@ -35,6 +36,12 @@ class Routers
 				return $this->ifMethodIsChecked($controller, $method);
 			}
 		
+		
+	}
+	
+	public function group(array $array,  $callback){
+		
+		call_user_func($callback, new Routers);
 		
 	}
 	
