@@ -26,7 +26,7 @@ class Routers
 	
 			if($url === Requests::getFirstPartOfUrl() && 'GET' === Requests::getUrlMethod()){
 				
-				print_r(end($this->groups));
+				print_r($this->groups);
 				
 				return $this->ifMethodIsChecked($controller, $method);
 			}
@@ -47,8 +47,17 @@ class Routers
 
 	public function group(array $param, Closure $callback){
 		
-		array_push($this->groups, $param);
-		$callback($this);		
+		//array_push($this->groups, $param);
+		$this->stackGroup($param);
+		call_user_func($callback, $this);
+		
+		array_pop($this->groups);
+	}
+	
+	public function stackGroup(array $attr){
+		
+		$this->groups[] = $attr;
+		
 	}
 	
 	
