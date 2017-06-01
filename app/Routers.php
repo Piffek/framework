@@ -7,9 +7,10 @@ use Closure;
 
 class Routers
 {
-	protected $groupStack = [];
-	protected $middlewareGroups = [];
-	protected $router = [];
+
+	public $router = [];
+	public $groups = [];
+
 	
 	public static function load($fileWithRoutes){
 		
@@ -22,8 +23,10 @@ class Routers
 	}
 	
 	public function get($url, $controller, $method){
-
+	
 			if($url === Requests::getFirstPartOfUrl() && 'GET' === Requests::getUrlMethod()){
+				
+				print_r(end($this->groups));
 				
 				return $this->ifMethodIsChecked($controller, $method);
 			}
@@ -40,13 +43,14 @@ class Routers
 		
 	}
 	
-	public function groupForMiddleware(array $param ,  Closure $callback){
-		$middlewareGroups[] = $param;
-		print_r($middlewareGroups);
-		call_user_func($callback, $this);
-		$this->updateGroupStack($param);
+
+
+	public function group(array $param, Closure $callback){
 		
+		array_push($this->groups, $param);
+		$callback($this);		
 	}
+	
 	
 	protected function updateGroupStack(array $attributes)
 	{
