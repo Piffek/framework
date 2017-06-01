@@ -47,8 +47,8 @@ class Routers
 
 	public function group(array $param, Closure $callback){
 		
-		//array_push($this->groups, $param);
 		$this->stackGroup($param);
+		
 		call_user_func($callback, $this);
 		
 		array_pop($this->groups);
@@ -58,16 +58,6 @@ class Routers
 		
 		$this->groups[] = $attr;
 		
-	}
-	
-	
-	protected function updateGroupStack(array $attributes)
-	{
-
-		foreach($attributes as $at){
-			$this->groupStack[] = $at;
-		}
-		$this->groupStack;
 	}
 	
 
