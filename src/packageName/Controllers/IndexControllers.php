@@ -15,5 +15,6 @@ class IndexControllers extends Controllers
 		echo $this->render('index.html.twig', array('framework' => $framework->getAll()));
 		
 	}
+
 	
 }

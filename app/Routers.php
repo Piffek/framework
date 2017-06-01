@@ -8,7 +8,8 @@ use Closure;
 class Routers
 {
 	
-	protected $router = [];
+	public $router = [];
+	public $groups = [];
 	
 	public static function load($fileWithRoutes){
 		
@@ -21,8 +22,10 @@ class Routers
 	}
 	
 	public function get($url, $controller, $method){
-
+	
 			if($url === Requests::getFirstPartOfUrl() && 'GET' === Requests::getUrlMethod()){
+				
+				//print_r(end($this->groups));
 				
 				return $this->ifMethodIsChecked($controller, $method);
 			}
@@ -39,9 +42,11 @@ class Routers
 		
 	}
 	
-	public function group(array $array,  $callback){
+	public function group(array $param, Closure $callback){
 		
-		call_user_func($callback, new Routers);
+		array_push($this->groups, $param);
+		$callback($this);		
+		
 		
 	}
 	
