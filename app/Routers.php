@@ -56,7 +56,17 @@ class Routers
 	
 	public function stackGroup(array $attr){
 		
+		if (!empty($this->groups)){
+			
+			$param = $this->addToCurrentGroup($attr, end($this->groups));
+			
+		}
 		$this->groups[] = $attr;
+		
+	}
+	
+	public function addToCurrentGroup(){
+		
 		
 	}
 	
