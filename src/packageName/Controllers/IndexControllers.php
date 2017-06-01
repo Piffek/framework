@@ -16,4 +16,9 @@ class IndexControllers extends Controllers
 		
 	}
 	
+	public function index2(){
+		
+		echo 'not in middleware';
+	}
+	
 }

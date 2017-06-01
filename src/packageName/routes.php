@@ -1,7 +1,7 @@
 <?php 
 
 
-$router->group(['middleware' => 'auth'], function($router) {
+$router->groupForMiddleware(['middleware'=>'auth'], function($router) {
 
 
 	$router->get('',  'IndexControllers', 'index');
@@ -12,4 +12,9 @@ $router->group(['middleware' => 'auth'], function($router) {
 	
 	$router->post('produkt', 'ProductControllers', 'addProduct');
 	
+});
+	
+$router->groupForMiddleware(['middleware'=>'auth2'], function($router) {
+	
+	$router->get('/kubek',  'IndexControllers', 'index2');
 });

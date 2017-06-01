@@ -7,7 +7,8 @@ use Closure;
 
 class Routers
 {
-	
+	protected $groupStack = [];
+	protected $middlewareGroups = [];
 	protected $router = [];
 	
 	public static function load($fileWithRoutes){
@@ -39,11 +40,24 @@ class Routers
 		
 	}
 	
-	public function group(array $array,  $callback){
-		
-		call_user_func($callback, new Routers);
+	public function groupForMiddleware(array $param ,  Closure $callback){
+		$middlewareGroups[] = $param;
+		print_r($middlewareGroups);
+		call_user_func($callback, $this);
+		$this->updateGroupStack($param);
 		
 	}
+	
+	protected function updateGroupStack(array $attributes)
+	{
+
+		foreach($attributes as $at){
+			$this->groupStack[] = $at;
+		}
+		$this->groupStack;
+	}
+	
+
 	
 	public function ifMethodIsChecked($controller, $method){
 		
