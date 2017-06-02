@@ -29,5 +29,18 @@ class Models
 		return $query->fetchAll(PDO::FETCH_CLASS);
 	}
 	
+	public function insert(array $param){
+		
+		$sql = sprintf('insert into %s (%s) values (%s)',
+			$this->table,
+			implode(', ', array_keys($param)),
+			':' . implode(', :', array_keys($param))
+		);
+		
+		$query = $this->connect()->prepare($sql);
+		$query->execute($param);
+		
+	}
+	
 	
 }
