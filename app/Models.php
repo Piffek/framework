@@ -23,7 +23,11 @@ class Models
 	
 	public function getAll(){
 		
-		$query = $this->connect()->prepare("SELECT * FROM ".$this->table."");
+		$sql = sprintf('select * from %s',
+			$this->table
+		);
+		$query = $this->connect()->prepare($sql);
+		
 		$query->execute();
 	
 		return $query->fetchAll(PDO::FETCH_CLASS);
@@ -38,6 +42,7 @@ class Models
 		);
 		
 		$query = $this->connect()->prepare($sql);
+		
 		$query->execute($param);
 		
 	}
