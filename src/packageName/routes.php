@@ -6,8 +6,6 @@
 
 $router->group(['middleware'=>'auth'], function($router){
 
-
-
 	$router->get('',  'IndexControllers', 'index');
 	
 	$router->get('produkt', 'ProductControllers', 'show');
@@ -29,3 +27,4 @@ $router->group(['middleware'=>'auth2'], function($router){
 	$router->get('login', 'LoginControllers', 'index');
 
 });
+

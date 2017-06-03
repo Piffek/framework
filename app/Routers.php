@@ -4,6 +4,8 @@ namespace App;
 use Src\packageName\Controllers;
 use Closure;
 
+use App\Middleware\Middleware;
+
 
 class Routers
 {
@@ -26,9 +28,8 @@ class Routers
 	
 			if($url === Requests::getFirstPartOfUrl() && 'GET' === Requests::getUrlMethod()){
 				
-				print_r($this->groups);
-				
 				return $this->ifMethodIsChecked($controller, $method);
+
 			}
 	}
 
@@ -46,6 +47,7 @@ class Routers
 
 
 	public function group(array $param, Closure $callback){
+		
 		
 		$this->stackGroup($param);
 		
@@ -71,8 +73,34 @@ class Routers
 			throw new \Exception('in '.$controller.' not appear '.$method.' method');
 			
 		}
+		
+		$this->runMiddleware();
+			
 		$cont =  new $className(Requests::groupURLToKeyAndValueAvailableInControllers());
 		$cont->$method();
+		
+	}
+	
+	public function runMiddleware(){
+		
+		$middleware = '\\Src\\packageName\\' . $this->groups[0]['middleware'].'Middleware';
+		
+		if(class_exists($middleware)){
+			
+			$routers = new Routers;
+			
+			$onion = new Middleware();
+			
+			$end = $onion->layer([
+					
+					new $middleware(),
+					
+			])->handle($routers, function($routers){});
+			
+			}else{
+				throw new \Exception('This middleware not exists');
+			}
+
 		
 	}
 
