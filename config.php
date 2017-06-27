@@ -11,5 +11,8 @@ return [
 			PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING,
 				
 		]
+	],
+	'twig' => [
+        'path' => 'framework/src/packageName/Resources/view',
 	]
 ];

@@ -15,7 +15,7 @@ class Models
 	
 	public function connect(){
 		
-		$config = require 'config.php';
+		$config = include __DIR__ . '/../config.php';
 		$pdo = new PDO('mysql:host='.$config['database']['host'] .';dbname='.$config['database']['name'].'', ''.$config['database']['user'].'', ''.$config['database']['password'], $config['database']['options']);
 		return $pdo;
 		

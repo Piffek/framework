@@ -9,9 +9,7 @@ use App\Controllers;
 class IndexControllers extends Controllers
 {
 	public function index(){
-		
 		$framework = new Framework('framework');
-	
 		echo $this->render('index.html.twig', array('framework' => $framework->getAll()));
 		
 	}
