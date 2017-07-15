@@ -88,7 +88,6 @@ class Routers
 		
 		if(class_exists($middleware)){
 			
-			
 			$end = $onion->layer([
 					
 					new $middleware(),
