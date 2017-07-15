@@ -15,7 +15,7 @@ $router->group(['middleware'=>'auth'], function($router){
 });
 
 
-$router->group(['middleware'=>'auth3'], function($router){
+$router->group(['middleware'=>'auth4'], function($router){
 
 	$router->get('login2', 'LoginControllers', 'index');
 });

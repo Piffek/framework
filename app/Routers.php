@@ -28,7 +28,7 @@ class Routers
 	public function get($url, $controller, $method){
 	
 			if($url === Requests::getFirstPartOfUrl() && 'GET' === Requests::getUrlMethod()){
-				
+			    
 				return $this->ifMethodIsChecked($controller, $method);
 
 			}
@@ -46,9 +46,13 @@ class Routers
 	}
 	
 
-
+    /*
+     * Group function stack middleware name and add this to $group array.
+     * call_user_func - trigger method get or post.
+     * param $callback - method of group.
+     * param $param - array with middleware name.
+     */
 	public function group(array $param, Closure $callback){
-		
 		
 		$this->stackGroup($param);
 		
@@ -57,9 +61,13 @@ class Routers
 		array_pop($this->groups);
 	}
 	
-	public function stackGroup(array $attr){
+	
+	/*
+	 * add middleware name to array.
+	 */
+	public function stackGroup(array $middlewareName){
 		
-		$this->groups[] = $attr;
+	    return $this->groups[] = $middlewareName;
 		
 	}
 	
@@ -70,15 +78,15 @@ class Routers
 		$className = '\\Src\\packageName\\Controllers\\' . $controller;
 		
 		if(!method_exists($className, $method)){
-			
-			throw new \Exception('in '.$controller.' not appear '.$method.' method');
+		    $error = 'in %s not appear %s method';
+		    throw new \Exception(sprintf($error, $controller, $method));
 			
 		}
 		
 		$this->runMiddleware($this, new Middleware());
 			
 		$cont =  new $className(Requests::groupURLToKeyAndValueAvailableInControllers());
-		$cont->$method();
+		return $cont->$method();
 		
 	}
 	
