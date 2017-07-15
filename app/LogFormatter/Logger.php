@@ -2,7 +2,6 @@
 
 namespace App\LogFormatter;
 
-use Src\NullObj;
 
 abstract class Logger
 {

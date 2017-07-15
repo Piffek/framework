@@ -3,8 +3,9 @@
 namespace App;
 use Src\packageName\Controllers;
 use Closure;
-
+use App\Routers;
 use App\Middleware\Middleware;
+
 
 
 class Routers
@@ -74,22 +75,19 @@ class Routers
 			
 		}
 		
-		$this->runMiddleware();
+		$this->runMiddleware($this, new Middleware());
 			
 		$cont =  new $className(Requests::groupURLToKeyAndValueAvailableInControllers());
 		$cont->$method();
 		
 	}
 	
-	public function runMiddleware(){
+	public function runMiddleware(Routers $routers, Middleware $onion){
 		
-		$middleware = '\\Src\\packageName\\' . $this->groups[0]['middleware'].'Middleware';
+		$middleware = '\\Src\\packageName\\' . $this->groups[0]['middleware'] . 'Middleware';
 		
 		if(class_exists($middleware)){
 			
-			$routers = new Routers;
-			
-			$onion = new Middleware();
 			
 			$end = $onion->layer([
 					

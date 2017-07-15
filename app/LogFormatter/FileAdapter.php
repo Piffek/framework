@@ -2,7 +2,6 @@
 
 namespace  App\LogFormatter;
 
-use Arc\Logger;
 
 class FileAdapter extends Logger
 {
