@@ -1,17 +1,26 @@
 <?php
 
 namespace App;
+use App\ServiceProvider\TwigServiceProvider;
 
-abstract class BaseControllers
+class BaseControllers
 {
+    protected $config;
+    protected $view;
+
+    public function __construct(){
+        $this->loadConfig();
+    }
+
 	public function render($template, array $parameters){
-	
-		$loader = new \Twig_Loader_Filesystem( __DIR__ .'/../src/packageName/Resources/view');
-	
-		$twig = new \Twig_Environment($loader);
-		
-		return $twig->render($template, $parameters);
-	
+		  $twig = new TwigServiceProvider($this->loadConfig()['twig']);
+		  return $twig->provide()->render($template, $parameters);
 	}
+
+	public function loadConfig(){
+		return $this->config = include __DIR__ . '/../config.php';
+	}
+
+
 	
 }
