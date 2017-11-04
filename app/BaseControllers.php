@@ -3,6 +3,7 @@
 namespace App;
 
 use App\ServiceProvider\TwigServiceProvider;
+use Dotenv\Dotenv;
 
 class BaseControllers
 {
@@ -12,6 +13,7 @@ class BaseControllers
     public function __construct()
     {
         $this->loadConfig();
+        $this->loadEnv();
     }
 
     /**
@@ -35,7 +37,13 @@ class BaseControllers
 	{
 		return $this->config = include __DIR__ . '/../config.php';
 	}
-
-
 	
+	/**
+	 * load env.
+	 */
+	public function loadEnv()
+	{
+	    $dotenv = new Dotenv($this->loadConfig()['env']['path']);
+	    $dotenv->load();
+	}
 }

@@ -19,11 +19,16 @@ class Models
 	 * 
 	 * @return \PDO
 	 */
-	public function connect()
+	public function connect() : \PDO
 	{
-		$config = include __DIR__ . '/../config.php';
-		$pdo = new PDO('mysql:host='.$config['database']['host'] .';dbname='.$config['database']['name'].'', ''.$config['database']['user'].'', ''.$config['database']['password'], $config['database']['options']);
-		return $pdo;
+	    $pdo = new PDO(
+	        'mysql:host='.getenv('host').';dbname='.getenv('db_name').'', ''.getenv('user').'', ''.getenv('password'),
+	        [
+	            PDO::MYSQL_ATTR_INIT_COMMAND => "SET CHARACTER SET utf8",
+	            PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING,
+	        ]
+	        );
+	    return $pdo;
 	}
 	
 	/**
