@@ -1,11 +1,14 @@
 <?php
-namespace App\Middleware;
 
+namespace App\Middleware;
 
 use \Closure;
 
-interface LayerInterface {
-	
-	public function handle($object, Closure $next);
-	
+/**
+ * 
+ * Interface to handle layer
+ */
+interface LayerInterface 
+{
+	public function handle($object, Closure $next);	
 }

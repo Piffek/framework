@@ -41,13 +41,9 @@ class Middleware {
     public function handle($object, Closure $core)
     {
         $coreFunction = $this->createCoreFunction($core);
-
         $layers = array_reverse($this->layers);
-
         $completeMiddleware = array_reduce($layers, function($nextLayer, $layer){
-        	
             return $this->createLayer($nextLayer, $layer);
-            
         }, $coreFunction);
 
         return $completeMiddleware($object);
@@ -56,10 +52,9 @@ class Middleware {
     /**
      * @return array
      */
-    public function toArray(){
-    	
+    public function toArray()
+    {
         return $this->layers;
-        
     }
     
     /**
